@@ -24,6 +24,7 @@ interface Context<Actions, State, Mutations = {}, Getters = {}, RootState = {}, 
   dispatch: Dispatch<Actions>;
   commit: Commit<Mutations>;
   getters: Getters;
+  rootState: RootState;
   rootGetters: RootGetters;
 }
 
