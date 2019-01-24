@@ -8,7 +8,7 @@
 ## Installation
 
 ```sh
-npm install --save-dev @nutype/vuex-typed
+npm install --save-dev vuex-typed
 ```
 
 ## Example
