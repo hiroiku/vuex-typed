@@ -1,0 +1,42 @@
+{
+  "name": "@nutype/vuex-typed",
+  "version": "0.1.0",
+  "description": "This library supports type safety Vuex development.",
+  "author": "Hiroiku Inoue",
+  "license": "MIT",
+  "keywords": [
+    "typescript",
+    "type safe",
+    "vue",
+    "vuex"
+  ],
+  "scripts": {
+    "lint": "vue-cli-service lint"
+  },
+  "types": "src/index.d.ts",
+  "files": [
+    "src"
+  ],
+  "devDependencies": {
+    "@vue/cli-plugin-typescript": "^3.3.0",
+    "@vue/cli-service": "^3.3.0",
+    "lint-staged": "^8.1.0",
+    "typescript": "^3.0.0",
+    "vue": "^2.5.21",
+    "vue-template-compiler": "^2.5.22",
+    "vuex": "^3.1.0"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "vue-cli-service lint",
+      "git add"
+    ],
+    "*.vue": [
+      "vue-cli-service lint",
+      "git add"
+    ]
+  }
+}
