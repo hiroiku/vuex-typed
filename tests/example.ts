@@ -2,9 +2,9 @@
  * Notice that it is annotated according to the type declared by the interface.
  */
 
-import { ActionTree, GetterTree, MutationTree } from '@/index';
 import Vue from 'vue';
 import Vuex from 'vuex';
+import { ActionTree, GetterTree, MutationTree } from 'vuex-typed';
 
 Vue.use(Vuex);
 
@@ -55,7 +55,7 @@ interface IActions {
   diff: (payload: Date) => number;
 }
 
-const actions: ActionTree<IActions, IState, IGetters, IMutations> = {
+const actions: ActionTree<IActions, IState, IMutations, IGetters> = {
   set: async ({ commit }, payload) => {
     commit('setDate', payload);
   },

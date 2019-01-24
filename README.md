@@ -5,6 +5,12 @@
 [![TypeScript>=2.8](https://img.shields.io/badge/typescript->%3D2.8-brightgreen.svg)](TypeScript>=2.8)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
+Vuex can be strongly-typed by interface.  
+And you can use this with a very simple declaration.
+
+Unlike existing projects, you can also strongly-typed the promise returned from dispatch.  
+This is an implementation for when the \$store on vue can now be typed in the future.
+
 ## Installation
 
 ```sh
@@ -18,9 +24,9 @@ npm install --save-dev vuex-typed
  * Notice that it is annotated according to the type declared by the interface.
  */
 
-import { ActionTree, GetterTree, MutationTree } from '@/index';
 import Vue from 'vue';
 import Vuex from 'vuex';
+import { ActionTree, GetterTree, MutationTree } from 'vuex-typed';
 
 Vue.use(Vuex);
 
@@ -71,7 +77,7 @@ interface IActions {
   diff: (payload: Date) => number;
 }
 
-const actions: ActionTree<IActions, IState, IGetters, IMutations> = {
+const actions: ActionTree<IActions, IState, IMutations, IGetters> = {
   set: async ({ commit }, payload) => {
     commit('setDate', payload);
   },
@@ -90,6 +96,7 @@ export default new Vuex.Store({
   mutations,
   actions
 });
+
 ```
 
 ## LICENSE

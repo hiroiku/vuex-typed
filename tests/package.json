@@ -1,0 +1,7 @@
+{
+  "name": "tests",
+  "devDependencies": {},
+  "dependencies": {
+    "vuex-typed": "file:.."
+  }
+}

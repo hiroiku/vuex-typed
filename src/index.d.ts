@@ -19,7 +19,7 @@ interface Commit<T> {
   <K extends { type: string }>(payloadWithType: K, options: { root: true }): void;
 }
 
-interface Context<Actions, State, Getters = {}, Mutations = {}, RootState = {}, RootGetters = {}>
+interface Context<Actions, State, Mutations = {}, Getters = {}, RootState = {}, RootGetters = {}>
   extends ActionContext<State, RootState> {
   dispatch: Dispatch<Actions>;
   commit: Commit<Mutations>;
@@ -35,9 +35,9 @@ export type MutationTree<Mutations, State> = {
   [K in keyof Mutations]: (state: State, payload: Payload<Mutations[K]>) => void
 };
 
-export type ActionTree<Actions, State, Getters = {}, Mutations = {}, RootState = {}, RootGetters = {}> = {
+export type ActionTree<Actions, State, Mutations = {}, Getters = {}, RootState = {}, RootGetters = {}> = {
   [K in keyof Actions]: (
-    context: Context<Actions, State, Getters, Mutations, RootState, RootGetters>,
+    context: Context<Actions, State, Mutations, Getters, RootState, RootGetters>,
     payload: Payload<Actions[K]>
   ) => ActionReturnValue<Actions[K]>
 };
@@ -47,11 +47,11 @@ export type ActionTree<Actions, State, Getters = {}, Mutations = {}, RootState =
 // }
 export type ModuleTree<Modules> = { [K in keyof Modules]: Modules[K] };
 
-export interface Module<State, RootState, Getters = {}, Mutations = {}, Actions = {}, RootGetters = {}> {
+export interface Module<State, RootState, Mutations = {}, Getters = {}, Actions = {}, RootGetters = {}> {
   namespaced?: boolean;
   state?: State | (() => State);
   getters?: GetterTree<Getters, State, RootState, RootGetters>;
   mutations?: MutationTree<Mutations, State>;
-  actions?: ActionTree<Actions, State, Getters, Mutations, RootState, RootGetters>;
+  actions?: ActionTree<Actions, State, Mutations, Getters, RootState, RootGetters>;
   modules?: ModuleTree<RootState>;
 }
