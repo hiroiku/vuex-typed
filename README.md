@@ -1,4 +1,4 @@
-# Typed Vuex
+# vuex-typed
 
 [![Vue>=2.5](https://img.shields.io/badge/vue->%3D2.5-brightgreen.svg)](Vue>=2.5)
 [![Vuex>=3.0](https://img.shields.io/badge/vuex->%3D3.0-brightgreen.svg)](Vuex>=3.0)
