@@ -1,6 +1,6 @@
 {
   "name": "vuex-typed",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "This library supports type safety Vuex development.",
   "author": "Hiroiku Inoue",
   "license": "MIT",
@@ -10,6 +10,15 @@
     "vue",
     "vuex"
   ],
+  "homepage": "https://github.com/hiroiku/vuex-typed",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/hiroiku/vuex-typed.git"
+  },
+  "bugs": {
+    "url":"https://github.com/hiroiku/vuex-typed/issues",
+    "email": "mail@hiroiku.me"
+  },
   "scripts": {},
   "types": "src/index.d.ts",
   "files": [
