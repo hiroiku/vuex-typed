@@ -37,7 +37,7 @@ const getters: GetterTree<IGetters, IState> = {
  */
 
 interface IMutations {
-  setDate: (payload: Date) => void;
+  setDate: Date;
 }
 
 const mutations: MutationTree<IMutations, IState> = {

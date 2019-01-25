@@ -13,8 +13,8 @@ interface Dispatch<T> {
 }
 
 interface Commit<T> {
-  <K extends keyof T>(type: K, payload?: Payload<T[K]>, options?: CommitOptions): void;
-  <K extends keyof T>(payloadWithType: Payload<T[K]>, options?: CommitOptions): void;
+  <K extends keyof T>(type: K, payload?: T[K], options?: CommitOptions): void;
+  <K extends keyof T>(payloadWithType: T[K], options?: CommitOptions): void;
   (type: string, payload: any, options: { root: true }): void;
   <K extends { type: string }>(payloadWithType: K, options: { root: true }): void;
 }
@@ -32,9 +32,7 @@ export type GetterTree<Getters, State, RootState = {}, RootGetters = {}> = {
   [K in keyof Getters]: (state: State, getters: Getters, rootState: RootState, rootGetters: RootGetters) => Getters[K]
 };
 
-export type MutationTree<Mutations, State> = {
-  [K in keyof Mutations]: (state: State, payload: Payload<Mutations[K]>) => void
-};
+export type MutationTree<Mutations, State> = { [K in keyof Mutations]: (state: State, payload: Mutations[K]) => void };
 
 export type ActionTree<Actions, State, Mutations = {}, Getters = {}, RootState = {}, RootGetters = {}> = {
   [K in keyof Actions]: (
@@ -43,9 +41,6 @@ export type ActionTree<Actions, State, Mutations = {}, Getters = {}, RootState =
   ) => ActionReturnValue<Actions[K]>
 };
 
-// export interface ModuleTree<R> {
-//   [key: string]: Module<any, R>;
-// }
 export type ModuleTree<Modules> = { [K in keyof Modules]: Modules[K] };
 
 export interface Module<State, RootState, Mutations = {}, Getters = {}, Actions = {}, RootGetters = {}> {
