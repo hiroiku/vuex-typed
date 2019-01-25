@@ -60,7 +60,7 @@ const actions: ActionTree<IActions, IState, IMutations, IGetters> = {
     commit('setDate', payload);
   },
   diff: async ({ getters }, payload) => {
-    return getters.time - payload.getTime();
+    return payload.getTime() - getters.time;
   }
 };
 

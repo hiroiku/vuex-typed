@@ -21,7 +21,7 @@ npm install --save-dev vuex-typed
 
 ```ts
 /*
- * Notice that it is annotated according to the type declared by the interface.
+ * Attention that it is annotated according to the type declared by the interface.
  */
 
 import Vue from 'vue';
@@ -82,7 +82,7 @@ const actions: ActionTree<IActions, IState, IMutations, IGetters> = {
     commit('setDate', payload);
   },
   diff: async ({ getters }, payload) => {
-    return getters.time - payload.getTime();
+    return payload.getTime() - getters.time;
   }
 };
 
@@ -96,7 +96,6 @@ export default new Vuex.Store({
   mutations,
   actions
 });
-
 ```
 
 ## LICENSE
