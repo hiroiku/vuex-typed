@@ -75,14 +75,22 @@ const mutations: MutationTree<IMutations, IState> = {
 interface IActions {
   set: (payload: Date) => void;
   diff: (payload: Date) => number;
+  now: () => Promise<number>;
 }
 
 const actions: ActionTree<IActions, IState, IMutations, IGetters> = {
-  set: async ({ commit }, payload) => {
+  set: ({ commit }, payload) => {
     commit('setDate', payload);
   },
-  diff: async ({ getters }, payload) => {
+  diff: ({ getters }, payload) => {
     return payload.getTime() - getters.time;
+  },
+  now: () => {
+    return new Promise(resolve =>
+      setTimeout(() => {
+        resolve(new Date().getTime());
+      }, 1000)
+    );
   }
 };
 
