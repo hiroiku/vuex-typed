@@ -5,8 +5,8 @@ type Payload<T> = T extends (payload: infer P) => any ? P : never;
 type ActionReturnValue<T> = T extends (payload: any) => infer R ? R : {};
 
 interface Dispatch<T> {
-  <K extends keyof T>(type: K, payload?: Payload<T[K]>, options?: DispatchOptions): Promise<T[K]>;
-  <K extends keyof T>(payloadWithType: Payload<T[K]>, options?: DispatchOptions): Promise<T[K]>;
+  <K extends keyof T>(type: K, payload?: Payload<T[K]>, options?: DispatchOptions): Promise<ActionReturnValue<T[K]>>;
+  <K extends keyof T>(payloadWithType: Payload<T[K]>, options?: DispatchOptions): Promise<ActionReturnValue<T[K]>>;
 
   (type: string, payload: any, options: { root: true }): Promise<any>;
   <K extends { type: string }>(payloadWithType: K, options: { root: true }): Promise<any>;
